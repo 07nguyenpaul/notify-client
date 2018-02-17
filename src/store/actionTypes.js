@@ -1,3 +1,5 @@
-// export const INCREMENT = 'INCREMENT';
-// export const DECREMENT = 'DECREMENT';
-// export const UPDATE = 'UPDATE';
+// ===========================DATABASE===========================
+
+export const FETCH_NOTIFICATIONS__REQUEST = 'FETCH_NOTIFICATIONS__REQUEST';
+export const FETCH_NOTIFICATIONS__SUCCESS = 'FETCH_NOTIFICATIONS__SUCCESS';
+export const FETCH_NOTIFICATIONS__FAILURE = 'FETCH_NOTIFICATIONS__FAILURE';
