@@ -5,6 +5,7 @@ import { combineReducers } from 'redux';
 
 const root = combineReducers({
   router: routerReducer,
+  database: {},
   // count,
 });
 
