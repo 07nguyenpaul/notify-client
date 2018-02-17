@@ -36,12 +36,14 @@ export const mockNotifications = [
     ],
     phoneNumber: '9135159867',
     type: 'contract',
+    nonce: 0,
   },
   {
     address: '0x3Ba431a29E4093Ab34E44aEAbb6aFc62747B0444',
     abi: [],
     phoneNumber: '9135159867',
     type: 'account',
+    nonce: 0,
   },
 ];
 
