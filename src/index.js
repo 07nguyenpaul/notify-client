@@ -14,14 +14,18 @@ const history = createBrowserHistory();
 const store = configureStore(history);
 
 const render = Component => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <Component />
-      </ConnectedRouter>
-    </Provider>,
-    document.getElementById('root')
-  );
+  if (window.web3) {
+    ReactDOM.render(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Component />
+        </ConnectedRouter>
+      </Provider>,
+      document.getElementById('root')
+    );
+  } else {
+    console.log('Please download MetaMask.');
+  }
 };
 
 render(App);

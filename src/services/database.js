@@ -1,7 +1,8 @@
 import mockNotifications from '../assets/mocks/mockNotifications';
+import axios from 'axios';
 
 class Database {
-  async getNotifications() {
+  async fetchNotifications() {
     return await mockNotifications;
   }
 }

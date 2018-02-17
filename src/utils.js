@@ -15,4 +15,10 @@ export function sortNotifications(unsortedNotifications) {
   return notifications;
 }
 
-export default { sortNotifications };
+export function checkPercentage(tubs) {
+  // console.log(tubs);
+  if (tubs) {
+  }
+}
+
+export default { sortNotifications, checkPercentage };

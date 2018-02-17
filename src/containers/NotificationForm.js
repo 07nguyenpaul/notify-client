@@ -2,39 +2,32 @@ import React, { Component } from 'react';
 import { Card, CardTitle } from 'react-md';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-
 import NewTubAddressForm from '../components/NewTubAddressForm';
 import PhoneNumberForm from '../components/PhoneNumberForm';
 import CollateralRatioForm from '../components/CollateralRatioForm';
-
 class NotificationForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       collateralPercentage: '',
-      tubAddress: '',
+      cdpID: '',
       number: '',
       step: 1,
     };
   }
-
   updateValues = (name, value) => {
     this.setState({ [name]: value });
   };
-
   advanceStep = () => {
     this.setState({ step: this.state.step + 1 });
   }
-
   stepBack = () => {
     this.setState({ step: this.state.step - 1 });
   }
-
   validInput = () => {
     switch(this.state.step) {
       case 1:
-        return this.state.tubAddress.length;
+        return this.state.cdpID.length;
       case 2:
         return this.state.number.length === 10;
       case 3:
@@ -43,13 +36,12 @@ class NotificationForm extends Component {
         return
     }
   };
-
   renderStreamStep() {
     switch (this.state.step) {
       case 1:
         return (
           <NewTubAddressForm
-            address={this.state.tubAddress}
+            address={this.state.cdpID}
             onChange={this.updateValues}
             step={this.state.step}
             advanceStep={this.advanceStep}
@@ -87,8 +79,10 @@ class NotificationForm extends Component {
         );
     }
   }
-
   render() {
+    console.log(this.state.number, this.state.cdpID, this.state.collateralPercentage);
+    console.log(this.state.cdpID);
+    console.log(this.state.collateralPercentage);
     return (
       <div>
         {this.renderStreamStep()}
@@ -96,9 +90,7 @@ class NotificationForm extends Component {
     )
   }
 }
-
 NotificationForm.propTypes = {
   dispatch: PropTypes.func,
 };
-
 export default withRouter(NotificationForm);
