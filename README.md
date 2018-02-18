@@ -1,3 +1,5 @@
+# Notify Yoself
+
 # Sass
 
 Project template for create-react-app that includes Sass.
