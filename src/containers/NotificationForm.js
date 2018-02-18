@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import { Card, CardTitle } from 'react-md';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-import NewContractAddressForm from '../components/NewContractAddressForm';
-import ChooseYoPath from '../components/ChooseYoPath';
+import NewTubAddressForm from '../components/NewTubAddressForm';
+import PhoneNumberForm from '../components/PhoneNumberForm';
+import CollateralRatioForm from '../components/CollateralRatioForm';
 
 class NotificationForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      abi: [],
-      contractAddress: '',
+      collateralPercentage: '',
+      tubAddress: '',
       number: '',
       step: 1,
     };
@@ -25,24 +27,66 @@ class NotificationForm extends Component {
     this.setState({ step: this.state.step + 1 });
   }
 
+  stepBack = () => {
+    this.setState({ step: this.state.step - 1 });
+  }
+
+  validInput = () => {
+    switch(this.state.step) {
+      case 1:
+        return this.state.tubAddress.length;
+      case 2:
+        return this.state.number.length === 10;
+      case 3:
+        return this.state.collateralPercentage.length;
+      default:
+        return
+    }
+  };
+
   renderStreamStep() {
     switch (this.state.step) {
       case 1:
         return (
-          <ChooseYoPath />
+          <NewTubAddressForm
+            address={this.state.tubAddress}
+            onChange={this.updateValues}
+            step={this.state.step}
+            advanceStep={this.advanceStep}
+            stepBack={this.stepBack}
+            validInput={this.validInput}
+          />
         );
       case 2:
         return (
-          <NewContractAddressForm
-            address={this.state.contractAddress}
+          <PhoneNumberForm
+            number={this.state.number}
             onChange={this.updateValues}
+            step={this.state.step}
+            advanceStep={this.advanceStep}
+            stepBack={this.stepBack}
+            validInput={this.validInput}
+          />
+        );
+      case 3:
+        return (
+          <CollateralRatioForm
+            collateralPercentage={this.state.collateralPercentage}
+            onChange={this.updateValues}
+            step={this.state.step}
+            advanceStep={this.advanceStep}
+            stepBack={this.stepBack}
+            validInput={this.validInput}
           />
         );
       default:
-        return <div>Step Default</div>;
+        return (
+          <Card>
+            <CardTitle title="A SMS will be sent to you soon!"/>
+          </Card>
+        );
     }
   }
-
 
   render() {
     return (
