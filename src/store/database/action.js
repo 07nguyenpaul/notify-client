@@ -1,15 +1,13 @@
 import * as types from '../actionTypes';
-import Database from '../../services/Database';
-import { sortNotifications } from '../../utils';
+import Database from '../../services/database';
 
 export function fetchNotifications() {
   return async dispatch => {
-    dispatch(Database.fetchNotificationsRequest());
+    dispatch(fetchNotificationsRequest());
 
     try {
       const notifications = await Database.fetchNotifications();
-      const sortedNotifications = await sortNotifications(notifications);
-      dispatch(fetchNotificationsSuccess(sortedNotifications));
+      dispatch(fetchNotificationsSuccess(notifications));
     } catch (err) {
       dispatch(fetchNotificationsFailure(err));
     }
