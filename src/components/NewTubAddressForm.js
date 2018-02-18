@@ -4,14 +4,7 @@ import { Card, CardTitle, CardText, Divider, TextField } from 'react-md';
 
 import NotificationFooter from './NotificationFooter';
 
-const NewTubAddressForm = ({
-  address,
-  onChange,
-  step,
-  advanceStep,
-  stepBack,
-  validInput,
-}) => {
+const NewTubAddressForm = ({ address, onChange, step, advanceStep, stepBack, validInput }) => {
   return (
     <Card className="address-card universal-card">
       <CardTitle title="Provide Your Collateralised Debt Position Identification (CDP ID)" />
