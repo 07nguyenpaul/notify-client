@@ -7,17 +7,17 @@ import NotificationFooter from './NotificationFooter';
 const NewTubAddressForm = ({ address, onChange, step, advanceStep, stepBack, validInput}) => {
   return (
     <Card className="address-card universal-card">
-      <CardTitle title="Provide your Tub Address" />
+      <CardTitle title="Provide Your Collateralised Debt Position Identification (CDP ID)" />
       <Divider />
       <CardText>
         <TextField
           id="stream-address"
-          label="Tub Address"
+          label="CDP ID"
           required
           value={address}
-          onChange={value => onChange('tubAddress', value)}
+          onChange={value => onChange('cdpID', value)}
           className="md-cell"
-          errorText="Please enter a valid Tub Address"
+          errorText="Please enter a valid CPD ID"
         />
       </CardText>
       <NotificationFooter

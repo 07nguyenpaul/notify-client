@@ -14,7 +14,11 @@ class NotificationFooter extends Component {
           (this.props.step >= 4 ? 'footer--disable' : 'footer--enable')
         }>
           <Button
-            className="footer__link footer-button"
+            // className="footer__link footer-button"
+            className={
+              'footer-button ' +
+              (this.props.step >= 1 ? 'footer--disable' : 'footer--enable')
+            }
             flat
             id="footer-btn__previous"
             onClick={() => this.props.stepBack()}

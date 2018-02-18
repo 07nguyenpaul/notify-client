@@ -13,7 +13,7 @@ class NotificationForm extends Component {
 
     this.state = {
       collateralPercentage: '',
-      tubAddress: '',
+      cdpID: '',
       number: '',
       step: 1,
     };
@@ -24,6 +24,11 @@ class NotificationForm extends Component {
   };
 
   advanceStep = () => {
+    // if (this.state.step === 3) {
+    //   const { cdpID, collateralPercentage, number } = this.state;
+    //   this.props.dispatch(postData(cdpID, collateralPercentage, number));
+    // }
+
     this.setState({ step: this.state.step + 1 });
   }
 
@@ -34,7 +39,7 @@ class NotificationForm extends Component {
   validInput = () => {
     switch(this.state.step) {
       case 1:
-        return this.state.tubAddress.length;
+        return this.state.cdpID.length;
       case 2:
         return this.state.number.length === 10;
       case 3:
@@ -49,7 +54,7 @@ class NotificationForm extends Component {
       case 1:
         return (
           <NewTubAddressForm
-            address={this.state.tubAddress}
+            address={this.state.cdpID}
             onChange={this.updateValues}
             step={this.state.step}
             advanceStep={this.advanceStep}
@@ -89,6 +94,7 @@ class NotificationForm extends Component {
   }
 
   render() {
+    console.log(this.state.number, this.state.cdpID, this.state.collateralPercentage);
     return (
       <div>
         {this.renderStreamStep()}
