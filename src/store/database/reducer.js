@@ -14,9 +14,11 @@ export default function database(state = initialState, action) {
       return {
         ...state,
         requesting: false,
-        notifications: action.notifications,
+        tubs: action.notifications,
       };
     case types.FETCH_NOTIFICATIONS__FAILURE:
       return { ...state, error: action.error };
+    default:
+      return false;
   }
 }
