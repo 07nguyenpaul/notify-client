@@ -1,5 +1,5 @@
 import * as types from '../actionTypes';
-import Database from '../../services/Database';
+import Database from '../../services/database';
 import { sortNotifications } from '../../utils';
 
 export function fetchNotifications() {
