@@ -9,7 +9,7 @@ import NotificationFooter from './NotificationFooter';
 const CollateralRatioForm = ({ collateralPercentage, onChange, step, advanceStep, stepBack, validInput}) => {
   return (
     <Card className="collateralPercentage-card universal-card">
-      <CardTitle title="Collateral Ratio treshold" />
+      <CardTitle title="Collateral Ratio threshold" />
       <Divider />
       <CardText>
         <TextField

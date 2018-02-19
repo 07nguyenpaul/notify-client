@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Card, CardTitle } from 'react-md';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+
 import NewTubAddressForm from '../components/NewTubAddressForm';
 import PhoneNumberForm from '../components/PhoneNumberForm';
 import CollateralRatioForm from '../components/CollateralRatioForm';
+
 class NotificationForm extends Component {
   constructor(props) {
     super(props);
@@ -15,15 +17,24 @@ class NotificationForm extends Component {
       step: 1,
     };
   }
+
   updateValues = (name, value) => {
     this.setState({ [name]: value });
   };
+
   advanceStep = () => {
+    // if (this.state.step === 3) {
+    //   const { cdpID, collateralPercentage, number } = this.state;
+    //   this.props.dispatch(postData(cdpID, collateralPercentage, number));
+    // }
+
     this.setState({ step: this.state.step + 1 });
   }
+
   stepBack = () => {
     this.setState({ step: this.state.step - 1 });
   }
+
   validInput = () => {
     switch(this.state.step) {
       case 1:
@@ -36,6 +47,7 @@ class NotificationForm extends Component {
         return
     }
   };
+
   renderStreamStep() {
     switch (this.state.step) {
       case 1:
@@ -79,10 +91,8 @@ class NotificationForm extends Component {
         );
     }
   }
+
   render() {
-    console.log(this.state.number, this.state.cdpID, this.state.collateralPercentage);
-    console.log(this.state.cdpID);
-    console.log(this.state.collateralPercentage);
     return (
       <div>
         {this.renderStreamStep()}
@@ -90,7 +100,9 @@ class NotificationForm extends Component {
     )
   }
 }
+
 NotificationForm.propTypes = {
   dispatch: PropTypes.func,
 };
+
 export default withRouter(NotificationForm);
